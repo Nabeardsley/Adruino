@@ -1,0 +1,95 @@
+int t = 0;
+
+int toggleswitch = 0;
+
+int Value = 0;
+
+int i = 0;
+
+int j = 0;
+
+int buttonstate = 0;
+
+int k = 0;
+
+int m = 0;
+
+void setup()
+{
+  pinMode(13, OUTPUT);
+  pinMode(12, INPUT);
+  Serial.begin(9600);
+
+  pinMode(7, OUTPUT);
+  pinMode(8, OUTPUT);
+
+  Serial.println("Press Button to start");
+}
+
+void loop()
+{
+  t = 0;
+  buttonstate = digitalRead(12);
+  digitalWrite(13, HIGH);
+  delay(200);
+  digitalWrite(13, LOW);
+  delay(200);
+  if (buttonstate == HIGH) {
+    Serial.println("Program Started");
+    for (t = 1; t <= 24; t += 1) {
+      Serial.println(t);
+      delay(3600000); // Wait for 3600000 millisecond(s)
+      if (t == 2) {
+        digitalWrite(7, HIGH);
+        digitalWrite(8, HIGH);
+        for (int x=0; x<t; x++){
+          	digitalWrite(13, HIGH); 
+   			delay(500);             
+   			digitalWrite(13, LOW); 
+   			delay(500);              
+        }
+        delay(300000); // Wait for 300000 millisecond(s)
+        digitalWrite(7, LOW);
+        digitalWrite(8, LOW);
+        
+        delay(1000); // Wait for 1000 millisecond(s)
+      }
+      if (t == 4) {
+        digitalWrite(7, HIGH);
+        digitalWrite(8, HIGH);
+        for (int x=0; x<t; x++){
+          	digitalWrite(13, HIGH); 
+   			delay(500);             
+   			digitalWrite(13, LOW); 
+   			delay(500);              
+        }
+        delay(300000); // Wait for 300000 millisecond(s)
+        digitalWrite(7, LOW);
+        digitalWrite(8, LOW);
+        delay(1000); // Wait for 1000 millisecond(s)
+      }
+    }
+    for (t = 25; t <= 72; t += 1) {
+      Serial.println(t);
+      digitalWrite(7, HIGH);
+      digitalWrite(8, HIGH);
+       for (int x=0; x<t-23; x++){
+          	digitalWrite(13, HIGH); 
+   			delay(200);             
+   			digitalWrite(13, LOW); 
+   			delay(200);              
+        }
+      delay(300000); // Wait for 300000 millisecond(s)
+      digitalWrite(7, LOW);
+      digitalWrite(8, LOW);
+      delay(1500000); // Wait for 1500000 millisecond(s)
+    }
+    while (t==73){
+      Serial.println(t);
+      digitalWrite(13, HIGH);
+      digitalWrite(7, HIGH);
+      digitalWrite(8, HIGH);
+
+    }
+  }
+}
